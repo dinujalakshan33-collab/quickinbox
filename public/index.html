@@ -1,1 +1,98 @@
-
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickInbox — Temporary Email</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7ff;
+      color: #18223a;
+    }
+    header {
+      padding: 22px;
+      background: #fff;
+      border-bottom: 1px solid #e5e9f2;
+      font-size: 24px;
+      font-weight: bold;
+      color: #4b55d9;
+    }
+    main {
+      max-width: 720px;
+      margin: 45px auto;
+      padding: 24px;
+    }
+    .panel {
+      background: white;
+      padding: 28px;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px #18223a12;
+    }
+    h1 { font-size: 30px; }
+    .address {
+      padding: 16px;
+      background: #f0f2ff;
+      border: 1px dashed #6974e8;
+      border-radius: 10px;
+      overflow-wrap: anywhere;
+      margin: 20px 0;
+    }
+    button {
+      padding: 12px 16px;
+      border: 0;
+      border-radius: 9px;
+      background: #4b55d9;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+      margin: 4px;
+    }
+    button.secondary { background: #e9ecff; color: #333d9e; }
+    .note { color: #68738a; line-height: 1.6; }
+    footer { text-align: center; color: #68738a; padding: 25px; }
+  </style>
+</head>
+<body>
+  <header>✉ QuickInbox</header>
+  <main>
+    <section class="panel">
+      <h1>Temporary Email Inbox</h1>
+      <p class="note">ඔබගේ තාවකාලික email ලිපිනය සූදානම් කරගන්න.</p>
+      <div class="address" id="email">Create a demo address</div>
+      <button onclick="createEmail()">Create Email</button>
+      <button class="secondary" onclick="copyEmail()">Copy Address</button>
+      <h2>Inbox</h2>
+      <p class="note" id="message">
+        ඔබගේ inbox එක මෙහි පෙන්වනු ලැබේ.
+      </p>
+      <p class="note">
+        මෙය දැනට demo interface එකකි. සැබෑ email ලබාගැනීමට
+        backend server එකක් සහ email receiving service එකක්
+        සම්බන්ධ කළ යුතුය.
+      </p>
+    </section>
+  </main>
+  <footer>QuickInbox © 2026</footer>
+  <script>
+    function createEmail() {
+      const id = Math.random().toString(36).slice(2, 10);
+      document.getElementById("email").textContent =
+        "qi-" + id + "@example.com";
+      document.getElementById("message").textContent =
+        "Demo address එකක් සෑදුවා. මෙයට සැබෑ email ලැබෙන්නේ නැහැ.";
+    }
+    async function copyEmail() {
+      const email = document.getElementById("email").textContent;
+      try {
+        await navigator.clipboard.writeText(email);
+        alert("Address copied!");
+      } catch (e) {
+        alert("Email address එක select කරලා copy කරන්න: " + email);
+      }
+    }
+  </script>
+</body>
+</html>
