@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="QuickInbox — a simple temporary inbox for messages you don't want in your main email.">
+  <title>QuickInbox — Temporary Email</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="QuickInbox home"><span class="brand-icon">Q</span><span>Quick<span class="accent">Inbox</span></span></a>
+    <span class="privacy"><span class="dot"></span> Temporary inbox</span>
+  </header>
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow"><span class="spark">✦</span> YOUR INBOX, WITHOUT THE CLUTTER</div>
+      <h1>A little privacy.<br><span class="gradient">A lot less spam.</span></h1>
+      <p class="subtitle">Create a temporary email address in seconds. Keep your main inbox for what matters.</p>
+    </section>
+    <section class="panel address-panel">
+      <div class="panel-head"><div><div class="section-label">YOUR TEMPORARY ADDRESS</div><p class="muted small">Use this address to receive an email.</p></div><span class="live"><span class="dot"></span> READY</span></div>
+      <div class="address-row">
+        <div class="address-box" id="address">Tap “Create inbox” to begin</div>
+        <button id="copyBtn" class="btn btn-secondary" disabled>Copy</button>
+      </div>
+      <div class="action-row">
+        <button id="createBtn" class="btn btn-primary"><span>✦</span> Create inbox</button>
+        <button id="refreshBtn" class="btn btn-secondary" disabled>↻ Refresh</button>
+        <button id="deleteBtn" class="btn btn-ghost" disabled>Delete</button>
+      </div>
+      <div class="timer-row"><span>⌛ Expires in</span><strong id="timer">—</strong><span class="timer-note" id="status">Create an inbox to get started.</span></div>
+    </section>
+    <section class="panel inbox-panel">
+      <div class="inbox-head"><div><div class="section-label">INCOMING MESSAGES</div><h2>Your inbox <span class="count" id="count">0</span></h2></div><span class="auto"><span class="dot"></span> Auto-refresh</span></div>
+      <div id="empty" class="empty-state"><div class="empty-icon">✉</div><h3>Nothing here yet</h3><p>Emails sent to your temporary address will appear here.</p><div class="loading-line" id="loadingLine" hidden></div></div>
+      <div id="messages" class="messages" aria-live="polite"></div>
+      <div id="detail" class="detail" hidden><button id="backBtn" class="back">← Back to messages</button><div class="detail-meta" id="detailMeta"></div><h3 id="detailSubject"></h3><pre id="detailBody"></pre></div>
+    </section>
+    <section class="features">
+      <article><div class="feature-icon violet">⌁</div><h3>Keep it separate</h3><p>Use a throwaway address instead of sharing your personal email.</p></article>
+      <article><div class="feature-icon blue">◷</div><h3>Short-lived by design</h3><p>Inbox messages are removed when the address expires.</p></article>
+      <article><div class="feature-icon green">⛨</div><h3>Private access</h3><p>Your inbox access token stays in this browser session.</p></article>
+    </section>
+    <footer><span>© <span id="year"></span> QuickInbox</span><span>Use responsibly · Avoid sensitive or important accounts</span></footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
